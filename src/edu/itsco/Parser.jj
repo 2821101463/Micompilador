@@ -1,0 +1,58 @@
+/**
+ * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
+ */options{  static = true;}PARSER_BEGIN(Parser)package edu.itsco;
+
+public class Parser{  public static void main(String args []) throws ParseException  {    Parser parser = new Parser(System.in);         }}PARSER_END(Parser)SKIP :{  " "| "\r"| "\t"| "\n"}TOKEN: {
+  < INICIO : "program" >
+| < FIN : "end" >
+| < VAR : "var" >
+| < INT : "int" >
+| < STRING : "string" >
+| < FLOAT : "float" > 
+ 
+| < PRINT : "print" >
+| < INPUT : "input" > 
+ 
+| < IF : "if" >
+| < ENTONCES : ":" >
+| < ELSE : "else" > 
+ 
+| < FOR : "for" >
+| < IN : "in" > 
+ 
+ 
+| < WHILE : "while" >
+| < DO : "do">  
+}
+TOKEN:{
+
+< SUM : "+" >
+| < REST : "-" >
+| < MULT : "*" >
+| < DIV : "/" >
+| < MOD : "%" >
+| < POT : "^" >
+| < IGUAL: "="> 
+ 
+| < MAYOR : ">" >
+| < MENOR : "<" > 
+ 
+| < AND : "&&" >
+| < OR : "||" >
+| < NOT : "!" > 
+ 
+| < AP: "(" >
+| < CP: ")" >
+| < AC: "[" >
+| < CC: "]"> 
+}
+TOKEN:{
+ <#digito: ["0"-"9"] >
+ | <#letra: ["a"-"z","A"-"Z"] > 
+
+ | <VALOR_INT: (<digito >)+ >
+ | <VALOR_FLOAT: (< digito >)+"."(< digito >)+ >
+ | <VALOR_STRING:("\'" (~["\'"])+ "\'") | ("\"" (~["\""])+ "\"") >  
+ 
+| <ID: ("_" | <letra >) ("_"|<letra >|<digito >)* >
+} 
