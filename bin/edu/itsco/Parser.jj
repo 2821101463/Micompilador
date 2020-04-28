@@ -2,7 +2,10 @@
  * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
  */options{  static = true;}PARSER_BEGIN(Parser)package edu.itsco;
 
-public class Parser{  public static void main(String args []) throws ParseException  {    Parser parser = new Parser(System.in);         }}PARSER_END(Parser)SKIP :{  " "| "\r"| "\t"| "\n"}TOKEN: {
+public class Parser{  public static void main(String args []) throws ParseException  {    Parser parser = new Parser(System.in);   System.out.println ("bienvenidos al COMPILADOR");
+   System.out.println ("----------------------------------------------");
+   Parser.principal();
+   System.out.println ("EL PROGRAMA SE COMPILO CORRECTAMENTE");      }}PARSER_END(Parser)SKIP :{  " "| "\r"| "\t"| "\n"}TOKEN: {
   < INICIO : "program" >
 | < FIN : "end" >
 | < VAR : "var" >
@@ -56,3 +59,35 @@ TOKEN:{
  
 | <ID: ("_" | <letra >) ("_"|<letra >|<digito >)* >
 } 
+
+void principal (): {}
+{
+   < INICIO >  <ID >
+      (        sentencias()
+      )+
+   < FIN >  
+}
+
+void sentencias(): { }
+{
+        declararVariable () 
+}
+
+void declararVariable(): { }
+{
+    < VAR >  <ID> TipoDato() [ <IGUAL > valor()] 
+}
+
+void TipoDato(): { }
+{
+  < INT > | < STRING > | < FLOAT >
+}
+
+void valor(): { }
+{
+  < VALOR_STRING > | < VALOR_INT > | < VALOR_FLOAT > | < ID >
+}
+  
+
+       
+  
